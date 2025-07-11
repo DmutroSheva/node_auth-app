@@ -50,7 +50,7 @@ const updateEmail = async (req, res) => {
     return res.status(400).json({ message: 'Emails do not match' });
   }
 
-  const existingEmail = await User.findOne({ where: { newEmail } });
+  const existingEmail = await User.findOne({ where: { email: newEmail } });
 
   if (existingEmail) {
     return res.status(400).json({ message: 'This email already exists' });

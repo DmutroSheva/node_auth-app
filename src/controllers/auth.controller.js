@@ -209,7 +209,7 @@ const resetPassword = async (req, res) => {
     }
 
     if (token !== user.resetToken) {
-      return res.json({ message: 'Invalid reset token' });
+      return res.status(401).json({ message: 'Invalid reset token' });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
